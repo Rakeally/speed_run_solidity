@@ -38,14 +38,14 @@ const TokenVendor: NextPage = () => {
     args: [toAddress, multiplyTo1e18(tokensToSend)],
   });
 
-  // // Vendor Balances
-  // const { data: vendorContractData } = useDeployedContractInfo("Vendor");
-  // const { data: vendorTokenBalance } = useScaffoldContractRead({
-  //   contractName: "YourToken",
-  //   functionName: "balanceOf",
-  //   args: [vendorContractData?.address],
-  // });
-  // const { balance: vendorEthBalance } = useAccountBalance(vendorContractData?.address);
+  // Vendor Balances
+  const { data: vendorContractData } = useDeployedContractInfo("Vendor");
+  const { data: vendorTokenBalance } = useScaffoldContractRead({
+    contractName: "YourToken",
+    functionName: "balanceOf",
+    args: [vendorContractData?.address],
+  });
+  const { balance: vendorEthBalance } = useAccountBalance(vendorContractData?.address);
 
   // // tokenPerEth
   // const { data: tokensPerEth } = useScaffoldContractRead({
@@ -87,7 +87,7 @@ const TokenVendor: NextPage = () => {
             </div>
           </div>
           {/* Vendor Balances */}
-          {/* <hr className="w-full border-secondary my-3" />
+           <hr className="w-full border-secondary my-3" />
           <div>
             Vendor token balance:{" "}
             <div className="inline-flex items-center justify-center">
@@ -98,7 +98,7 @@ const TokenVendor: NextPage = () => {
           <div>
             Vendor eth balance: {vendorEthBalance?.toFixed(4)}
             <span className="font-bold ml-1">ETH</span>
-          </div> */}
+          </div> 
         </div>
 
         {/* Buy Tokens */}
