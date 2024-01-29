@@ -6,6 +6,7 @@ import "./YourToken.sol";
 
 contract Vendor is Ownable {
 	event BuyTokens(address buyer, uint256 amountOfETH, uint256 amountOfTokens);
+	event SellTokens(address seller, uint256 amountOfTokens, uint256 amountOfETH);
 
 	YourToken public yourToken;
 
@@ -16,7 +17,6 @@ contract Vendor is Ownable {
 	}
 
 	function buyTokens() external payable {
-		// require(msg.value > 0, "Amount must be greater than 0");
 		uint amountOfTokensTPay = msg.value * tokensPerEth;
 		yourToken.transfer(msg.sender, amountOfTokensTPay);
 		emit BuyTokens(msg.sender, msg.value, amountOfTokensTPay);
@@ -41,10 +41,6 @@ contract Vendor is Ownable {
 			""
 		);
 		require(s);
+		emit(msg.sender, _amount, ethToPay);
 	}
-	// ToDo: create a payable buyTokens() function:
-
-	// ToDo: create a withdraw() function that lets the owner withdraw ETH
-
-	// ToDo: create a sellTokens(uint256 _amount) function:
 }
