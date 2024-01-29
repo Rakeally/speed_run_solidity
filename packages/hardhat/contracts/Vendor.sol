@@ -23,13 +23,21 @@ contract Vendor is Ownable {
 	}
 
 	function withdraw() external onlyOwner {
-		// 	// require(payable(msg.sender).transfer(address(this).balance), "hey");
-		// 	//
-		// 	// (bool s, ) = address(msg.sender).call{ value: address(this).balance }(
-		// 	// 	""
-		// 	// );
 		require(address(this).balance > 0, "Account balance is 0");
 		(bool s, ) = address(msg.sender).call{ value: address(this).balance }(
+			""
+		);
+		require(s);
+	}
+
+	function sellTokens(uint256 _amount) external {
+		require(
+			yourToken.balanceOf(msg.sender) > 0,
+			"Insifficient token balance"
+		);
+		yourToken.transferFrom(msg.sender, address(this), _amount);
+		uint ethToPay = _amount / tokensPerEth;
+		(bool s, ) = address(msg.sender).call{ value: ethToPay * (10 ** 18) }(
 			""
 		);
 		require(s);

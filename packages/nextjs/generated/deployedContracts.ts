@@ -5,7 +5,7 @@ const contracts = {
       name: "localhost",
       contracts: {
         Vendor: {
-          address: "0x36C02dA8a0983159322a80FFE9F24b1acfF8B570",
+          address: "0x2bdCC0de6bE1f7D2ee689a0342D76F52E8EFABa3",
           abi: [
             {
               inputs: [
@@ -90,6 +90,19 @@ const contracts = {
               type: "function",
             },
             {
+              inputs: [
+                {
+                  internalType: "uint256",
+                  name: "_amount",
+                  type: "uint256",
+                },
+              ],
+              name: "sellTokens",
+              outputs: [],
+              stateMutability: "nonpayable",
+              type: "function",
+            },
+            {
               inputs: [],
               name: "tokensPerEth",
               outputs: [
@@ -138,7 +151,7 @@ const contracts = {
           ],
         },
         YourToken: {
-          address: "0x5eb3Bc0a489C5A8288765d2336659EbCA68FCd00",
+          address: "0x82e01223d51Eb87e16A03E24687EDF0F294da6f1",
           abi: [
             {
               inputs: [],
